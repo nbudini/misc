@@ -1,0 +1,25 @@
+﻿\begin{tikzpicture}
+\begin{axis}[
+	grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+	xlabel=$t$ (s), 
+	minor tick num=3,
+	xmin=0, xmax=6.7,
+	ymin=-28, ymax=74,
+	axis lines=middle,
+	samples=100,
+	domain=0:6.8,
+	xlabel style={at={(ticklabel* cs:1.15)},anchor=east},
+    ylabel style={at={(ticklabel* cs:1.17)},anchor=north},
+	axis line style={-latex},
+	try min ticks=5,
+	width=8cm,height=5cm,
+	legend cell align={left},
+	legend style={at={(axis cs:4.5,42)},anchor=south west,draw=none,font=\scriptsize}
+]
+	\addplot [blue, thick] {x^3 - 12*x^2 + 36*x +30};
+	\addplot [green!80!black, thick] {6*x -24};
+	\legend{$x$ (ft),$a$ (ft/s$^2$)}
+\end{axis}
+\end{tikzpicture}
