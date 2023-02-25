@@ -1,0 +1,102 @@
+\documentclass[tikz]{standalone}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,mathtools,amssymb,physics,cancel,bm}
+\usepackage[cal=boondox]{mathalfa}
+\usepackage[per-mode=fraction]{siunitx}
+\usepackage{cmbright}
+\usepackage[T1]{fontenc}
+\usepackage{tikz,pgfplots,pgf,pgfplotstable,tikz-3dplot}
+\usetikzlibrary{positioning,
+                arrows,
+                decorations.pathreplacing,
+                decorations.text,
+                intersections,
+                decorations.pathmorphing,
+                patterns,
+                fit,
+                babel,
+                angles,
+                quotes,
+                shapes,
+                calc,
+                backgrounds,
+                3d} 
+\pgfplotsset{compat=newest}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+	grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+	xlabel=$t$ (s), 
+	ylabel=$x$ (mm), 
+	minor tick num=3,
+	xmin=0, xmax=3.6,
+	ymin=-1.8, ymax=1.8,
+	axis lines=middle,
+	samples=500,
+	domain=0:6.8,
+	xlabel style={at={(ticklabel* cs:1.15)},anchor=east},
+    ylabel style={at={(ticklabel* cs:1.17)},anchor=north},
+	axis line style={-latex},
+	try min ticks=5,
+	width=8cm,height=5cm,
+	legend cell align={left},
+	legend style={at={(axis cs:0.97,75)},anchor=south west,draw=none,font=\scriptsize}
+]
+	\addplot [blue, thick] {cos(deg(10*x))-0.1*sin(deg(10*x))};
+\end{axis}
+
+\begin{scope}[shift={(0,-4.3)}]	
+\begin{axis}[
+	grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+	xlabel=$t$ (s), 
+	ylabel=$v$ (mm/s), 
+	minor tick num=3,
+	xmin=0, xmax=3.6,
+	ymin=-13, ymax=13,
+	axis lines=middle,
+	samples=500,
+	domain=0:6.8,
+	xlabel style={at={(ticklabel* cs:1.15)},anchor=east},
+    ylabel style={at={(ticklabel* cs:1.17)},anchor=north},
+	axis line style={-latex},
+	try min ticks=5,
+	width=8cm,height=5cm,
+	legend cell align={left},
+	legend style={at={(axis cs:0.97,75)},anchor=south west,draw=none,font=\scriptsize}
+]
+\addplot [red, thick] {-10*sin(deg(10*x))-cos(deg(10*x))};
+\end{axis}
+\end{scope}
+
+\begin{scope}[shift={(0,-8.6)}]	
+\begin{axis}[
+	grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+	xlabel=$t$ (s), 
+	ylabel=$a$ (mm/s$^2$), 
+	minor tick num=3,
+	xmin=0, xmax=3.6,
+	ymin=-115, ymax=115,
+	axis lines=middle,
+	samples=500,
+	domain=0:6.8,
+	xlabel style={at={(ticklabel* cs:1.15)},anchor=east},
+    ylabel style={at={(ticklabel* cs:1.19)},anchor=north},
+	axis line style={-latex},
+	try min ticks=5,
+	width=8cm,height=5cm,
+	legend cell align={left},
+	legend style={at={(axis cs:0.97,75)},anchor=south west,draw=none,font=\scriptsize}
+]
+	\addplot [green!80!black, thick] {-100*cos(deg(10*x))+10*sin(deg(10*x))};
+\end{axis}
+\end{scope}
+\end{tikzpicture}
+\end{document}
