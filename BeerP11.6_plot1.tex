@@ -1,0 +1,87 @@
+\documentclass[tikz]{standalone}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,mathtools,amssymb,physics,cancel,bm}
+\usepackage[cal=boondox]{mathalfa}
+\usepackage[per-mode=fraction]{siunitx}
+\usepackage{cmbright}
+\usepackage[T1]{fontenc}
+\usepackage{tikz,pgfplots,pgf,pgfplotstable,tikz-3dplot}
+\usetikzlibrary{positioning,
+                arrows,
+                decorations.pathreplacing,
+                decorations.text,
+                intersections,
+                decorations.pathmorphing,
+                patterns,
+                fit,
+                babel,
+                angles,
+                quotes,
+                shapes,
+                calc,
+                backgrounds,
+                3d,
+                fillbetween} 
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=newest}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+	grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+	xlabel=$t$ (s), 
+	ylabel=$v$ (ft/s), 
+	minor tick num=4,
+	xmin=0, xmax=6,
+	ymin=-5, ymax=35,
+	axis lines=middle,
+	samples=500,
+	domain=0:6,
+	xlabel style={at={(ticklabel* cs:1.15)},anchor=east},
+    ylabel style={at={(ticklabel* cs:1.17)},anchor=north},
+	axis line style={-latex},
+	scaled y ticks=false,
+	try min ticks=5,
+	width=8cm,height=5cm,
+	legend cell align={left},
+	legend style={at={(axis cs:0.97,75)},anchor=south west,draw=none,font=\scriptsize}
+]
+	\addplot [blue, thick] {3*x^2 -12*x + 9};
+\end{axis}
+\node at (3.2,4) {(a)};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\begin{axis}[
+	grid=both,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+	xlabel=$t$ (s), 
+	ylabel=$|v|$ (ft/s), 
+	minor tick num=4,
+	xmin=0, xmax=6,
+	ymin=-5, ymax=35,
+	axis lines=middle,
+	samples=500,
+	domain=0:6,
+	xlabel style={at={(ticklabel* cs:1.15)},anchor=east},
+    ylabel style={xshift=0.15cm,at={(ticklabel* cs:1.17)},anchor=north},
+	axis line style={-latex},
+	scaled y ticks=false,
+	try min ticks=5,
+	width=8cm,height=5cm,
+	legend cell align={left},
+	legend style={at={(axis cs:0.97,75)},anchor=south west,draw=none,font=\scriptsize}
+]
+	\addplot [name path=v,red, thick] {abs(3*x^2 -12*x + 9)};
+
+	\addplot[name path=axis,draw=none]{0};
+
+	\addplot [red!30] fill between[of=v and axis,soft clip={domain=0:5}];
+\end{axis}
+\node at (3.2,4) {(b)};
+\end{tikzpicture}
+\end{document}
